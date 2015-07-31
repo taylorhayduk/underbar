@@ -342,6 +342,29 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    // create empty newArray with same length as input array
+    var newArray = [];
+    newArray.length = array.length;
+
+    // iterate thru each item in input array and place it in random 'undefined' position in newArray
+    for (var i = 0; i < array.length; i++) {
+      var placed = false;
+      while (!placed) {
+        var placeHere = Math.floor(Math.random()*array.length);
+        if (newArray[placeHere] == undefined) {
+          newArray[placeHere] = array[i];
+          placed = true;
+        }
+      }
+    }
+    // return newArray once we are certain it is different than original array
+    for (var j = 0; j < array.length; j++) {
+      if (array[j] !== newArray[j]) {
+        return newArray;
+      }
+    }
+    // Wow! We shuffled the array so much it is back in it's original order! Lets suffle more!
+    return _.shuffle(array);
   };
 
 
