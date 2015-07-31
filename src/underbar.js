@@ -305,6 +305,16 @@
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    var results = {};
+
+    return function() {
+      var uniqArgu = arguments[0];
+      if (results[uniqArgu] == undefined) {
+        results[uniqArgu] = func.apply(this, arguments);
+      }
+      console.log(results);
+      return results[uniqArgu];
+    };
   };
 
   // Delays a function for the given number of milliseconds, and then calls
