@@ -312,7 +312,6 @@
       if (results[uniqArgu] == undefined) {
         results[uniqArgu] = func.apply(this, arguments);
       }
-      console.log(results);
       return results[uniqArgu];
     };
   };
