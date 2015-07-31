@@ -170,7 +170,6 @@
       current = collection.shift();
     }
 
-    console.log(collection);
     _.each(collection, function(item) {
       current = iterator(current, item);
     })
